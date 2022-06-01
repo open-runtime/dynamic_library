@@ -39,7 +39,7 @@ DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPa
     // Early Exit if the desired search directory doesn't exist
     Directory directory = Directory(searchPath);
     if (!directory.existsSync()) {
-      throw LoadDynamicLibraryException('Search Path directory does not exist\n\tDirectory: ${directory.path}');
+      throw LoadDynamicLibraryException('Search Path directory does not exist\n\tDirectory: ${directory.path}\n');
     }
     libraryPath = p.join(searchPath, libraryFile);
   } else {
@@ -54,7 +54,7 @@ DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPa
         '\tLibrary Name: $libraryName\n'
         '\tCurrent Directory: ${p.current} \n'
         '\tDesired Path: $libraryPath \n'
-        '\tResolved Full Path: ${p.absolute(libraryFile)}');
+        '\tResolved Full Path: ${p.absolute(libraryPath)}\n');
   }
 
   try {
@@ -64,7 +64,7 @@ DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPa
     throw LoadDynamicLibraryException('$e\n\n'
         'Dependency Check:\n'
         '\tstderr: ${dependencyCheckResult.stderr}\n'
-        '\tstdout: ${dependencyCheckResult.stdout}');
+        '\tstdout: ${dependencyCheckResult.stdout}\n');
   }
 }
 

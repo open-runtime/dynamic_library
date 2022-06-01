@@ -1,3 +1,8 @@
+## 0.5.0
+
+- Fixed "Resolved Full Path" to use Library Path instead of name
+- Minor changes to the positioning of '\t' in exception strings (moved to beginning instead of end of line)
+
 ## 0.4.0
 
 - Replaced `libraryFile` with `libraryPath` to run OS Dependency check on the proper files
