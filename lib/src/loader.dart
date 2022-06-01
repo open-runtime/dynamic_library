@@ -39,8 +39,7 @@ DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPa
     // Early Exit if the desired search directory doesn't exist
     Directory directory = Directory(searchPath);
     if (!directory.existsSync()) {
-      throw LoadDynamicLibraryException('Search Path directory does not exist\n\t'
-          'Directory: ${directory.path}');
+      throw LoadDynamicLibraryException('Search Path directory does not exist\n\tDirectory: ${directory.path}');
     }
     libraryPath = p.join(searchPath, libraryFile);
   } else {
@@ -52,20 +51,20 @@ DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPa
   // Check to see that the Dynamic Library file exists before trying to load it
   if (!File(libraryPath).existsSync()) {
     throw LoadDynamicLibraryException('$libraryName cannot be found at the following location\n\t'
-        'Library Name: $libraryName\n\t'
-        'Current Directory: ${p.current} \n\t'
-        'Desired Path: $libraryPath \n\t'
-        'Resolved Full Path: ${p.absolute(libraryFile)}');
+        '\tLibrary Name: $libraryName\n'
+        '\tCurrent Directory: ${p.current} \n'
+        '\tDesired Path: $libraryPath \n'
+        '\tResolved Full Path: ${p.absolute(libraryFile)}');
   }
 
-  // Try loading the dynamic library
   try {
     return DynamicLibrary.open(libraryPath);
   } catch (e) {
-    ProcessResult dependencyCheckResult = callOSDependencyCheck(libraryFile);
-    throw LoadDynamicLibraryException('$libraryFile cannot be loaded. It may be missing dependencies\n\t'
-        'Dependency Check Results [stderr]: ${dependencyCheckResult.stderr}\n\t'
-        'Dependency Check Results [stdout]: ${dependencyCheckResult.stdout}');
+    ProcessResult dependencyCheckResult = callOSDependencyCheck(libraryPath);
+    throw LoadDynamicLibraryException('$e\n\n'
+        'Dependency Check:\n'
+        '\tstderr: ${dependencyCheckResult.stderr}\n'
+        '\tstdout: ${dependencyCheckResult.stdout}');
   }
 }
 

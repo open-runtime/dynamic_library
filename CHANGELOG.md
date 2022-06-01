@@ -1,3 +1,9 @@
+## 0.4.0
+
+- Replaced `libraryFile` with `libraryPath` to run OS Dependency check on the proper files
+- More expressive exception when dynamic library fails to load (throws message from `DynamicLibrary.open()` instead of
+  obscuring it)
+
 ## 0.3.0
 
 Breaking changes:
