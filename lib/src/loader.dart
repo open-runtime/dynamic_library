@@ -39,7 +39,7 @@ Future<DynamicLibrary> loadDynamicLibrary({required String libraryName, String? 
     // Early Exit if the desired search directory doesn't exist
     Directory directory = Directory(searchPath);
     if (!directory.existsSync()) {
-      throw Exception('loadDynamicLibrary Error: Search Path directory does not exist\n'
+      throw LoadDynamicLibraryException('Search Path directory does not exist\n\t'
           'Directory: ${directory.path}');
     }
     libraryPath = p.join(searchPath, libraryFile);
@@ -51,9 +51,10 @@ Future<DynamicLibrary> loadDynamicLibrary({required String libraryName, String? 
 
   // Check to see that the Dynamic Library file exists before trying to load it
   if (!File(libraryPath).existsSync()) {
-    throw Exception('loadDynamicLibrary Error: $libraryName cannot be found\n'
-        'Current Directory: ${p.current} \n'
-        'Desired Path: $libraryPath}\n'
+    throw LoadDynamicLibraryException('$libraryName cannot be found at the following location\n\t'
+        'Library Name: $libraryName\n\t'
+        'Current Directory: ${p.current} \n\t'
+        'Desired Path: $libraryPath \n\t'
         'Resolved Full Path: ${p.absolute(libraryFile)}');
   }
 
@@ -62,9 +63,9 @@ Future<DynamicLibrary> loadDynamicLibrary({required String libraryName, String? 
     return DynamicLibrary.open(libraryPath);
   } catch (e) {
     ProcessResult dependencyCheckResult = await callOSDependencyCheck(libraryFile);
-    throw Exception('loadDynamicLibrary Error: $libraryFile cannot be loaded. It may not have all of its dependencies\n'
-        'Dependency Check Results [stderr]: ${dependencyCheckResult.stderr}\n'
-        'Dependency Check Results [stdout]: ${dependencyCheckResult.stdout}\n');
+    throw LoadDynamicLibraryException('$libraryFile cannot be loaded. It may be missing dependencies\n\t'
+        'Dependency Check Results [stderr]: ${dependencyCheckResult.stderr}\n\t'
+        'Dependency Check Results [stdout]: ${dependencyCheckResult.stdout}');
   }
 }
 
@@ -79,4 +80,14 @@ Future<ProcessResult> callOSDependencyCheck(String libraryPath) async {
       : Platform.isMacOS || Platform.isIOS
           ? Process.run('dumpbin', ['/DEPENDENTS', libraryPath])
           : Process.run('ldd', [libraryPath]);
+}
+
+class LoadDynamicLibraryException implements Exception {
+  String cause;
+  LoadDynamicLibraryException(this.cause);
+
+  @override
+  String toString() {
+    return 'LoadDynamicLibrary Exception: $cause';
+  }
 }
