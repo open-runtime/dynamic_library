@@ -17,4 +17,15 @@ void main() {
       }
     });
   });
+
+  group('exceptions', () {
+    test('fails to find directory', () {
+      expect(() => loadDynamicLibrary(libraryName: 'doesntexist', searchPath: 'path/to/nowhere'),
+          throwsA(isA<LoadDynamicLibraryException>()));
+    });
+
+    test('fails to find file', () {
+      expect(() => loadDynamicLibrary(libraryName: 'doesntexist'), throwsA(isA<LoadDynamicLibraryException>()));
+    });
+  });
 }

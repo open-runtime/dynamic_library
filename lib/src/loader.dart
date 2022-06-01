@@ -50,7 +50,7 @@ DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPa
 
   // Check to see that the Dynamic Library file exists before trying to load it
   if (!File(libraryPath).existsSync()) {
-    throw LoadDynamicLibraryException('$libraryName cannot be found at the following location\n\t'
+    throw LoadDynamicLibraryException('$libraryName cannot be found at the following location\n'
         '\tLibrary Name: $libraryName\n'
         '\tCurrent Directory: ${p.current} \n'
         '\tDesired Path: $libraryPath \n'

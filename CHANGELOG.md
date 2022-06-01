@@ -1,3 +1,9 @@
+## 0.6.0
+
+- Added unit tests
+- CI/CD runs tests on 3 platforms on "Test" workflow
+- Minor formatting change in exception print-out
+
 ## 0.5.0
 
 - Fixed "Resolved Full Path" to use Library Path instead of name
