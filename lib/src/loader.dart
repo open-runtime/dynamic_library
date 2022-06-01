@@ -28,7 +28,7 @@ String fullLibraryName(String name) => libraryPrefix() + name + systemLibExtensi
 
 /// Load the dynamic library and throw more verbose exceptions to improve debugging
 /// in cases where dynamic libraries exist but lack necessary dependencies
-Future<DynamicLibrary> loadDynamicLibrary({required String libraryName, String? searchPath}) async {
+DynamicLibrary? loadDynamicLibrary({required String libraryName, String? searchPath}) {
   late String libraryPath;
 
   // Get the platform specific file name
@@ -62,7 +62,7 @@ Future<DynamicLibrary> loadDynamicLibrary({required String libraryName, String? 
   try {
     return DynamicLibrary.open(libraryPath);
   } catch (e) {
-    ProcessResult dependencyCheckResult = await callOSDependencyCheck(libraryFile);
+    ProcessResult dependencyCheckResult = callOSDependencyCheck(libraryFile);
     throw LoadDynamicLibraryException('$libraryFile cannot be loaded. It may be missing dependencies\n\t'
         'Dependency Check Results [stderr]: ${dependencyCheckResult.stderr}\n\t'
         'Dependency Check Results [stdout]: ${dependencyCheckResult.stdout}');
@@ -74,12 +74,12 @@ Future<DynamicLibrary> loadDynamicLibrary({required String libraryName, String? 
 /// - Windows: `dumpbin /DEPENDENTS [LIBRARY_PATH]`
 /// - MacOS: `otool -L [LIBRARY_PATH]`
 /// - Linux: `ldd [LIBRARY_PATH]`
-Future<ProcessResult> callOSDependencyCheck(String libraryPath) async {
+ProcessResult callOSDependencyCheck(String libraryPath) {
   return Platform.isWindows
-      ? Process.run('otool', ['-L', libraryPath])
+      ? Process.runSync('dumpbin', ['/DEPENDENTS', libraryPath])
       : Platform.isMacOS || Platform.isIOS
-          ? Process.run('dumpbin', ['/DEPENDENTS', libraryPath])
-          : Process.run('ldd', [libraryPath]);
+          ? Process.runSync('otool', ['-L', libraryPath])
+          : Process.runSync('ldd', [libraryPath]);
 }
 
 class LoadDynamicLibraryException implements Exception {

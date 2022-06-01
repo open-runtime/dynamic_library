@@ -18,17 +18,15 @@ fail to load for any one of the following reasons:
 The implementation of `DynamicLibrary` in the dart standard library fails to say essentially anything other 
 than 'DynamicLibrary fails to load'. When deploying multiple dynamic libraries across multiple platforms, we really need
 traceability to know if the dynamic library doesn't exist, isn't in the right place or is missing dependencies to
-better inform the developer on proper debugging steps or
+better inform the developer on proper debugging steps or work scope estimation.
 
 ## Usage
 
 TODO: Include snippets and examples
 
-## Additional information
+## Contributing
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+This package is [maintained on Github][repo_link]
 
 [analysis_options_yaml]: https://github.com/open-runtime/dynamic_library/blob/main/analysis_options.yaml
 [ci_badge]: https://github.com/open-runtime/dynamic_library/workflows/ci/badge.svg
@@ -43,4 +41,5 @@ from the package authors, and more.
 [style_badge_link]: https://pub.dev/packages/runtime_lints
 
 [open_runtime_github]: https://github.com/open-runtime
+[repo_link]: https://github.com/open-runtime/dynamic_library
 [runtime_link]: https://runtime.dev
