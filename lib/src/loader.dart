@@ -69,7 +69,7 @@ DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPa
   }
 }
 
-/// Call OS-specific tools for resolving Dynamic Library Dependencies
+/// Call OS-specific CLI tools for resolving Dynamic Library Dependencies
 ///
 /// - Windows: `dumpbin /DEPENDENTS [LIBRARY_PATH]`
 /// - MacOS: `otool -L [LIBRARY_PATH]`
@@ -82,6 +82,7 @@ ProcessResult callOSDependencyCheck(String libraryPath) {
           : Process.runSync('ldd', [libraryPath]);
 }
 
+/// Custom Exception class for errors that occur in [loadDynamicLibrary] function
 class LoadDynamicLibraryException implements Exception {
   String cause;
   LoadDynamicLibraryException(this.cause);

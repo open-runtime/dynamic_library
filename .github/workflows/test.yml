@@ -1,0 +1,54 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Test
+
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  publish_dry_run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: dart-lang/setup-dart@v1.3
+
+      - name: Create Dart Publish Dry Run Report
+        run: dart pub publish --dry-run >> report.txt
+      - run: cat report.txt
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: dart-lang/setup-dart@v1.3
+
+      - name: Get dependencies
+        run: dart pub get
+
+      - name: Run analyze
+        run: dart analyze
+
+      - name: Run analyze
+        run: dart test
+
+  test_example:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: dart-lang/setup-dart@v1.3
+
+      - name: Pub get in example/
+        working-directory: ./example
+        run: dart pub get
+
+      - name: Run analyze
+        working-directory: ./example
+        run: dart analyze
