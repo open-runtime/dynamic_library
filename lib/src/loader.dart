@@ -28,7 +28,7 @@ String fullLibraryName(String name) => libraryPrefix() + name + systemLibExtensi
 
 /// Load the dynamic library and throw more verbose exceptions to improve debugging
 /// in cases where dynamic libraries exist but lack necessary dependencies
-DynamicLibrary? loadDynamicLibrary({required String libraryName, String? searchPath}) {
+DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPath}) {
   late String libraryPath;
 
   // Get the platform specific file name
