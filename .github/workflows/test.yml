@@ -34,5 +34,5 @@ jobs:
       - name: Run analyze
         run: dart analyze
 
-      - name: Run analyze
+      - name: Run tests
         run: dart test
