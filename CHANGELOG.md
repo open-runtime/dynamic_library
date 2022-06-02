@@ -1,3 +1,7 @@
+## 0.7.0
+
+- Widened Dart SDK requirement to '>=2.12.0 <3.0.0'
+
 ## 0.6.0
 
 - Added unit tests
