@@ -18,7 +18,10 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1.3
 
-      - name: Store credentials
-        run: echo "CREDENTIALS GO HERE"
-
-      - run: dart pub publish --force
+      - name: Publish
+        uses: sakebook/actions-flutter-pub-publisher@v1.4.0
+        with:
+          credential: ${{ secrets.PUB_DEV_CREDENTIALS }}
+          flutter_package: false
+          skip_test: true
+          dry_run: true
