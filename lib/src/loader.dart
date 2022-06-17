@@ -26,6 +26,9 @@ String libraryPrefix() => Platform.operatingSystem == 'windows' ? '' : 'lib';
 /// Get the full dynamic library file name for this platform
 String fullLibraryName(String name) => libraryPrefix() + name + systemLibExtension();
 
+/// Whether this is being called by dart vs a compiled application
+bool isDart() => p.basenameWithoutExtension(Platform.resolvedExecutable) == 'dart';
+
 /// Load the dynamic library and throw more verbose exceptions to improve debugging
 /// in cases where dynamic libraries exist but lack necessary dependencies
 DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPath}) {
@@ -43,10 +46,11 @@ DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPa
     }
     libraryPath = p.join(searchPath, libraryFile);
   } else {
-    // Handle weird edge case where running Dart on Linux needs
-    // The './' prepended to the dynamic library file name
-    libraryPath = Platform.resolvedExecutable.endsWith('dart') && Platform.isLinux ? './$libraryFile' : libraryFile;
+    libraryPath = libraryFile;
   }
+
+  // Use absolute paths on dart runtimes (instead of flutter applications)
+  libraryPath = isDart() ? p.absolute(libraryPath) : libraryPath;
 
   // Check to see that the Dynamic Library file exists before trying to load it
   if (!File(libraryPath).existsSync()) {

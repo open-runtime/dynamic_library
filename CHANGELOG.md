@@ -1,3 +1,9 @@
+## 0.8.0
+
+- Fixed cases where loading libraries will fail on MacOS with relative paths on hardened runtimes by
+  always using full paths when 
+- Surfaced `isDart()` function in `loader.dart` to enable Dart JIT runtime environments
+
 ## 0.7.0
 
 - Widened Dart SDK requirement to '>=2.12.0 <3.0.0'

@@ -24,6 +24,12 @@ better inform the developer on proper debugging steps or work scope estimation.
 
 TODO: Include snippets and examples
 
+Note: It is recommended to not use `searchPaths` when using this library in compiled applications as there are a 
+lot of cross-platform variables to consider in your application. This `searchPaths` parameter is more useful for
+running dart code in a development environment (with binaries in various locations), instead of in production 
+environments.
+
+
 ## Contributing
 
 This package is [maintained on Github][repo_link]
