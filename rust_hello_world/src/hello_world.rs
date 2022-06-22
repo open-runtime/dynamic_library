@@ -1,4 +1,4 @@
-pub fn hello_world() -> Result<String> {
-    String string = {"Hello World"};
-    Ok(string)
+pub fn hello_world() -> String {
+    let string = String::from("Hello World!");
+    return string;
 }

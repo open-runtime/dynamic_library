@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "sample_library"
+name = "hello_world"
 version = "0.0.1"

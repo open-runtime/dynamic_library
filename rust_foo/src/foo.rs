@@ -1,4 +1,4 @@
-pub fn foo() -> Result<String> {
-    let String string = {"bar!"};
-    Ok(string)
+pub fn foo() -> String {
+    let string = String::from("bar!");
+    return string;
 }

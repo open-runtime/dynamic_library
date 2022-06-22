@@ -1,5 +1,5 @@
 [package]
-name = "sample_library"
+name = "foo"
 version = "0.0.1"
 edition = "2018"
 
