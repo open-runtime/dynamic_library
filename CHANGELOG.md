@@ -1,6 +1,9 @@
 ## 0.9.0
 
-- 
+- Added `flutter_example` application for testing dynamic library resolution in compiled applications
+- Added minimal Rust libraries `rust_foo` + `rust_hello_world` for building dynamic libraries to test with
+- Fixed the dynamic_library loading scheme by deferring the `File().exists()` -- which fails on flutter applications -- 
+  check until failure to enrich exceptions.
 
 ## 0.8.0
 
