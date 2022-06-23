@@ -4,6 +4,9 @@
 [![License: MIT][license_badge]][license_badge_link]
 [![style: runtime_lints][style_badge]][style_badge_link]
 
+> **_NOTE:_**  This package is currently released under `0.*.*` version semantics and should not
+> be considered to have a stable API until version `1.*.*`
+
 This Dart package is focused on providing better experiences related to `DynamicLibrary` usage in 
 Dart and Flutter projects. This package is used internally at [Pieces.app][Pieces.app] and [Runtime.dev][Runtime.dev]
 
@@ -19,6 +22,22 @@ The implementation of `DynamicLibrary` in the dart standard library fails to say
 than 'DynamicLibrary fails to load'. When deploying multiple dynamic libraries across multiple platforms, we really need
 traceability to know if the dynamic library doesn't exist, isn't in the right place or is missing dependencies to
 better inform the developer on proper debugging steps or work scope estimation.
+
+## Project Layout
+
+This package follows the traditional dart package layout:
+
+* `example` - example usage
+* `lib` - source code
+* `test` - tests
+
+This project also has more source code is are used to verify the unique requirements of 
+dynamic libraries for Flutter applications + Dart applications. These tests are currently not
+in CI/CD and are checked manually for releases, but this will be resolved in the future.
+
+* `flutter_example/` - flutter application to use to test out dynamic library loading
+  in a bundled application
+* `rust_*/` - the rust folders are used to build dynamic libraries for testing
 
 ## Usage
 

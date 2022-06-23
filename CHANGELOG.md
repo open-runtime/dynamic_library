@@ -1,3 +1,7 @@
+## 0.9.0
+
+- 
+
 ## 0.8.0
 
 - Fixed cases where loading libraries will fail on MacOS with relative paths on hardened runtimes by
