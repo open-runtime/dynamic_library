@@ -18,10 +18,10 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1.3
 
-      - name: Publish
-        uses: sakebook/actions-flutter-pub-publisher@v1.4.0
-        with:
-          credential: ${{ secrets.PUB_DEV_CREDENTIALS }}
-          flutter_package: false
-          skip_test: true
-          dry_run: true
+#      - name: Publish
+#        uses: sakebook/actions-flutter-pub-publisher@v1.4.0
+#        with:
+#          credential: ${{ secrets.PUB_DEV_CREDENTIALS }}
+#          flutter_package: false
+#          skip_test: true
+#          dry_run: true

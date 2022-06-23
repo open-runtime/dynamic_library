@@ -29,9 +29,8 @@ String fullLibraryName(String name) => libraryPrefix() + name + systemLibExtensi
 /// Whether this is being called by dart vs a compiled application
 bool isDart() => p.basenameWithoutExtension(Platform.resolvedExecutable) == 'dart';
 
-/// Load the dynamic library and throw more verbose exceptions to improve debugging
-/// in cases where dynamic libraries exist but lack necessary dependencies
-DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPath}) {
+///
+String fullLibraryPath(String libraryName, {String? searchPath}) {
   late String libraryPath;
 
   // Get the platform specific file name
@@ -51,20 +50,37 @@ DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPa
 
   // Use absolute paths on dart runtimes (instead of flutter applications)
   libraryPath = isDart() ? p.absolute(libraryPath) : libraryPath;
+  return libraryPath;
+}
 
-  // Check to see that the Dynamic Library file exists before trying to load it
-  if (!File(libraryPath).existsSync()) {
-    throw LoadDynamicLibraryException('$libraryName cannot be found at the following location\n'
-        '\tLibrary Name: $libraryName\n'
-        '\tCurrent Directory: ${p.current} \n'
-        '\tDesired Path: $libraryPath \n'
-        '\tResolved Full Path: ${p.absolute(libraryPath)}\n');
-  }
+/// Load the dynamic library and throw more verbose exceptions to improve debugging
+/// in cases where dynamic libraries exist but lack necessary dependencies
+///
+/// Note: We do not recommend using [searchPath] in Flutter applications due to the
+/// implementation defined nuances in cross-platform development. If you bundle your dynamic
+/// libraries in the correct location in your application, then you can find the dynamic library
+/// with just `DynamicLibrary.open()` or `loadDynamicLibrary(libraryName: 'my_library')`
+///
+/// We recommend using [searchPath] instead for Dart applications, servers, micro-services,
+/// where you have more control over the library locations
+DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPath}) {
+  // Get the full library path
+  String libraryPath = fullLibraryPath(libraryName, searchPath: searchPath);
 
   try {
     return DynamicLibrary.open(libraryPath);
   } catch (e) {
+    // Try to check to see if the file just doesn't exist at this location
+    if (!File(libraryPath).existsSync()) {
+      throw LoadDynamicLibraryException('$libraryName cannot be found at the following location\n'
+          '\tSearch Path: $searchPath\n'
+          '\tDesired Path: $libraryPath\n'
+          '\tCurrent Directory: ${p.current}\n'
+          '\tResolved Full Path: ${p.absolute(libraryPath)}\n');
+    }
+
     ProcessResult dependencyCheckResult = callOSDependencyCheck(libraryPath);
+
     throw LoadDynamicLibraryException('$e\n\n'
         'Dependency Check:\n'
         '\tstderr: ${dependencyCheckResult.stderr}\n'

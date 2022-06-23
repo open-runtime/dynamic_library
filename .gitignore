@@ -28,3 +28,6 @@ doc/api/
 
 # IDE specific directories
 .idea
+
+# Rust library samples for testing
+**/target
