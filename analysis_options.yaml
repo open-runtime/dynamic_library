@@ -2,7 +2,7 @@ include: package:runtime_lints/recommended.yaml
 
 analyzer:
   exclude:
-    - flutter_example/*
+    - flutter_example/**
 
 linter:
   rules:
