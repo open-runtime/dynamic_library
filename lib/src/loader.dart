@@ -50,7 +50,6 @@ String fullLibraryPath(String libraryName, {String? searchPath}) {
 
   // Use absolute paths on dart runtimes (instead of flutter applications)
   libraryPath = isDart() ? p.absolute(libraryPath) : libraryPath;
-
   return libraryPath;
 }
 
@@ -72,19 +71,17 @@ DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPa
     return DynamicLibrary.open(libraryPath);
   } catch (e) {
     // Try to check to see if the file just doesn't exist at this location
-    String locationError = '';
     if (!File(libraryPath).existsSync()) {
-      locationError = '$libraryName cannot be found at the following location\n'
-          '\tLibrary Name: $libraryName\n'
+      throw LoadDynamicLibraryException('$libraryName cannot be found at the following location\n'
           '\tSearch Path: $searchPath\n'
           '\tDesired Path: $libraryPath\n'
           '\tCurrent Directory: ${p.current}\n'
-          '\tResolved Full Path: ${p.absolute(libraryPath)}\n';
+          '\tResolved Full Path: ${p.absolute(libraryPath)}\n');
     }
 
     ProcessResult dependencyCheckResult = callOSDependencyCheck(libraryPath);
 
-    throw LoadDynamicLibraryException('$e\n\n$locationError\n'
+    throw LoadDynamicLibraryException('$e\n\n'
         'Dependency Check:\n'
         '\tstderr: ${dependencyCheckResult.stderr}\n'
         '\tstdout: ${dependencyCheckResult.stdout}\n');
