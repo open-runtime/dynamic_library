@@ -5,7 +5,7 @@
 [![style: runtime_lints][style_badge]][style_badge_link]
 
 This Dart package is focused on providing better experiences related to `DynamicLibrary` usage in 
-Dart and Flutter projects. This package is used internally at [Pieces.app][Pieces.app] and [Runtime.dev][Runtime.dev]
+Dart and Flutter projects. This package is used internally at [Pieces.app][pieces_link] and [Runtime.dev][runtime_link]
 
 We considered using the [dylib](https://pub.dev/packages/dylib) package but found it insufficient to provide
 descriptive errors when working with dynamic libraries on Dart and Flutter Applications. Dynamic libraries could
@@ -49,3 +49,4 @@ This package is [maintained on Github][repo_link]
 [open_runtime_github]: https://github.com/open-runtime
 [repo_link]: https://github.com/open-runtime/dynamic_library
 [runtime_link]: https://runtime.dev
+[pieces_link]: https://code.pieces.app
