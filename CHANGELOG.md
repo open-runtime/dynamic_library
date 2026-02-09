@@ -1,3 +1,12 @@
+## 1.0.0
+
+- **Breaking**: Bumped minimum Dart SDK to `>=3.6.0 <4.0.0`
+- Added `frb_init.dart` module with Flutter Rust Bridge initialization utilities:
+  - `frbDynamicLibraryName()` -- builds platform-correct FRB library filenames (handles macOS no-prefix convention)
+  - `frbFullLibraryPath()` -- resolves full path with macOS prefix-strip workaround
+  - `initializeFrbLibrary()` -- high-level init function replacing ~95 lines of duplicated init logic across FRB packages
+- Added `flutter_rust_bridge` as a dependency (for `ExternalLibrary` type)
+
 ## 0.9.0
 
 - Added `flutter_example` application for testing dynamic library resolution in compiled applications
