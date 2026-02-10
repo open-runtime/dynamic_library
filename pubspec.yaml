@@ -11,5 +11,5 @@ dependencies:
   path: ^1.8.0
 
 dev_dependencies:
-  runtime_lints: ^0.3.0
+  flutter_lints: ^6.0.0
   test: ^1.25.0
