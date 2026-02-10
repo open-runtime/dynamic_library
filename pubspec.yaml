@@ -6,6 +6,8 @@ homepage: https://github.com/open-runtime/dynamic_library
 environment:
   sdk: '>=3.9.0 <4.0.0'
 
+resolution: workspace
+
 dependencies:
   flutter_rust_bridge: ^2.9.0
   path: ^1.8.0
