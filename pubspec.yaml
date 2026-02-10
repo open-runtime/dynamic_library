@@ -1,6 +1,6 @@
 name: dynamic_library
 description: Dart library for improving the process of loading dynamic libraries (with OS-specific load checks) and initializing Flutter Rust Bridge packages.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/open-runtime/dynamic_library
 
 environment:
