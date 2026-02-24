@@ -88,6 +88,43 @@ DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPa
   }
 }
 
+/// Loads a dynamic library using an explicit filename, bypassing platform
+/// naming conventions. Use this for libraries with non-standard naming
+/// (e.g., versioned Linux shared objects like 'libonnxruntime.so.1.23.2').
+DynamicLibrary loadDynamicLibraryRaw({required String fileName, String? searchPath}) {
+  late String libraryPath;
+
+  if (searchPath != null && searchPath.isNotEmpty) {
+    Directory directory = Directory(searchPath);
+    if (!directory.existsSync()) {
+      throw LoadDynamicLibraryException(
+          'Search Path directory does not exist\n\tDirectory: ${directory.path}\n');
+    }
+    libraryPath = p.join(searchPath, fileName);
+  } else {
+    libraryPath = fileName;
+  }
+
+  libraryPath = isDart() ? p.absolute(libraryPath) : libraryPath;
+
+  try {
+    return DynamicLibrary.open(libraryPath);
+  } catch (e) {
+    if (!File(libraryPath).existsSync()) {
+      throw LoadDynamicLibraryException('$fileName cannot be found at the following location\n'
+          '\tSearch Path: $searchPath\n'
+          '\tDesired Path: $libraryPath\n'
+          '\tCurrent Directory: ${p.current}\n'
+          '\tResolved Full Path: ${p.absolute(libraryPath)}\n');
+    }
+    ProcessResult dependencyCheckResult = callOSDependencyCheck(libraryPath);
+    throw LoadDynamicLibraryException('$e\n\n'
+        'Dependency Check:\n'
+        '\tstderr: ${dependencyCheckResult.stderr}\n'
+        '\tstdout: ${dependencyCheckResult.stdout}\n');
+  }
+}
+
 /// Call OS-specific CLI tools for resolving Dynamic Library Dependencies
 ///
 /// - Windows: `dumpbin /DEPENDENTS [LIBRARY_PATH]`
