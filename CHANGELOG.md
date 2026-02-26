@@ -1,3 +1,8 @@
+## 1.0.1
+
+- Updated dependencies: unified workspace dependencies and bumped `flutter_lints` to `^6.0.0`
+- Bumped minimum Dart SDK to `>=3.9.0`
+
 ## 1.0.0
 
 - **Breaking**: Bumped minimum Dart SDK to `>=3.6.0 <4.0.0`
