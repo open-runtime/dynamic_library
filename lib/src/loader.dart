@@ -29,50 +29,36 @@ String fullLibraryName(String name) => libraryPrefix() + name + systemLibExtensi
 /// Whether this is being called by dart vs a compiled application
 bool isDart() => p.basenameWithoutExtension(Platform.resolvedExecutable) == 'dart';
 
-///
-String fullLibraryPath(String libraryName, {String? searchPath}) {
+/// Resolve a library file to a full path, validating searchPath if provided.
+String _resolveLibraryPath(String fileName, {String? searchPath}) {
   late String libraryPath;
 
-  // Get the platform specific file name
-  String libraryFile = fullLibraryName(libraryName);
-
-  // Build the dynamic library path from a search path or just a file name
   if (searchPath != null && searchPath.isNotEmpty) {
-    // Early Exit if the desired search directory doesn't exist
     Directory directory = Directory(searchPath);
     if (!directory.existsSync()) {
       throw LoadDynamicLibraryException('Search Path directory does not exist\n\tDirectory: ${directory.path}\n');
     }
-    libraryPath = p.join(searchPath, libraryFile);
+    libraryPath = p.join(searchPath, fileName);
   } else {
-    libraryPath = libraryFile;
+    libraryPath = fileName;
   }
 
-  // Use absolute paths on dart runtimes (instead of flutter applications)
   libraryPath = isDart() ? p.absolute(libraryPath) : libraryPath;
   return libraryPath;
 }
 
-/// Load the dynamic library and throw more verbose exceptions to improve debugging
-/// in cases where dynamic libraries exist but lack necessary dependencies
 ///
-/// Note: We do not recommend using [searchPath] in Flutter applications due to the
-/// implementation defined nuances in cross-platform development. If you bundle your dynamic
-/// libraries in the correct location in your application, then you can find the dynamic library
-/// with just `DynamicLibrary.open()` or `loadDynamicLibrary(libraryName: 'my_library')`
-///
-/// We recommend using [searchPath] instead for Dart applications, servers, micro-services,
-/// where you have more control over the library locations
-DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPath}) {
-  // Get the full library path
-  String libraryPath = fullLibraryPath(libraryName, searchPath: searchPath);
+String fullLibraryPath(String libraryName, {String? searchPath}) {
+  return _resolveLibraryPath(fullLibraryName(libraryName), searchPath: searchPath);
+}
 
+/// Try to open a dynamic library, throwing verbose diagnostics on failure.
+DynamicLibrary _openWithDiagnostics({required String libraryPath, required String displayName, String? searchPath}) {
   try {
     return DynamicLibrary.open(libraryPath);
   } catch (e) {
-    // Try to check to see if the file just doesn't exist at this location
     if (!File(libraryPath).existsSync()) {
-      throw LoadDynamicLibraryException('$libraryName cannot be found at the following location\n'
+      throw LoadDynamicLibraryException('$displayName cannot be found at the following location\n'
           '\tSearch Path: $searchPath\n'
           '\tDesired Path: $libraryPath\n'
           '\tCurrent Directory: ${p.current}\n'
@@ -86,6 +72,29 @@ DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPa
         '\tstderr: ${dependencyCheckResult.stderr}\n'
         '\tstdout: ${dependencyCheckResult.stdout}\n');
   }
+}
+
+/// Load the dynamic library and throw more verbose exceptions to improve debugging
+/// in cases where dynamic libraries exist but lack necessary dependencies
+///
+/// Note: We do not recommend using [searchPath] in Flutter applications due to the
+/// implementation defined nuances in cross-platform development. If you bundle your dynamic
+/// libraries in the correct location in your application, then you can find the dynamic library
+/// with just `DynamicLibrary.open()` or `loadDynamicLibrary(libraryName: 'my_library')`
+///
+/// We recommend using [searchPath] instead for Dart applications, servers, micro-services,
+/// where you have more control over the library locations
+DynamicLibrary loadDynamicLibrary({required String libraryName, String? searchPath}) {
+  String libraryPath = fullLibraryPath(libraryName, searchPath: searchPath);
+  return _openWithDiagnostics(libraryPath: libraryPath, displayName: libraryName, searchPath: searchPath);
+}
+
+/// Loads a dynamic library using an explicit filename, bypassing platform
+/// naming conventions. Use this for libraries with non-standard naming
+/// (e.g., versioned Linux shared objects like 'libonnxruntime.so.1.23.2').
+DynamicLibrary loadDynamicLibraryRaw({required String fileName, String? searchPath}) {
+  String libraryPath = _resolveLibraryPath(fileName, searchPath: searchPath);
+  return _openWithDiagnostics(libraryPath: libraryPath, displayName: fileName, searchPath: searchPath);
 }
 
 /// Call OS-specific CLI tools for resolving Dynamic Library Dependencies
