@@ -1,3 +1,8 @@
+## 1.0.2
+
+- Refactored shared loader logic: extracted `_resolveLibraryPath` and `_openWithDiagnostics` to deduplicate `loadDynamicLibrary` and `loadDynamicLibraryRaw`
+- Added test coverage for `loadDynamicLibraryRaw` exception paths
+
 ## 1.0.1
 
 - Added `loadDynamicLibraryRaw()` for loading libraries with non-standard filenames (e.g., versioned Linux shared objects like `libonnxruntime.so.1.23.2`)
