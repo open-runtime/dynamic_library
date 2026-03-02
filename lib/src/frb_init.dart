@@ -3,12 +3,76 @@ import 'dart:io' show Directory, File, Platform;
 import 'dart:typed_data' show ByteData;
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart' show ExternalLibrary;
+import 'package:path/path.dart' as path;
 
+import '../dynamic_library.dart';
 import 'loader.dart' show fullLibraryPath;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Tier A: Helpers (building blocks)
 // ─────────────────────────────────────────────────────────────────────────────
+
+String flutterAssetsDirectory({bool localDebugMode = false}) {
+  final String resolvedExeDir = path.dirname(Platform.resolvedExecutable);
+
+  if (Platform.isMacOS && localDebugMode) {
+    // Need to resolve it differently in local debug mode because assets are in a different location
+    // Location of resolved exe relative dir when run locally unpackaged:
+    // <build location>/Pieces OS.app/Contents/MacOS
+
+    // Location of flutter assets directory relative dir when run locally unpackaged:
+    // <build location>/Pieces OS.app/Contents/Frameworks/App.framework/Versions/A/Resources/flutter_assets/assets
+    return path.joinAll([
+      Directory(resolvedExeDir).parent.path, // Contents
+      'Frameworks',
+      'App.framework',
+      'Versions',
+      'A',
+      'Resources',
+      'flutter_assets',
+      'assets',
+    ]);
+  } else if (Platform.isMacOS) {
+    // Location of resolved exe relative dir when in bundled.app:
+    // Pieces OS.app/Contents/Frameworks/App.framework/Versions/A
+    return path.joinAll([resolvedExeDir, 'Resources', 'flutter_assets', 'assets']);
+  }
+
+  // Standard location
+  return path.joinAll([path.dirname(Platform.resolvedExecutable), 'data', 'flutter_assets', 'assets']);
+}
+
+/// Returns the default location from which dynamic libraries are loaded to be used as the search path of library resolution
+String defaultLibraryDirectory({bool localDebugMode = false}) {
+  final String resolvedExeDir = path.dirname(Platform.resolvedExecutable);
+
+  if (Platform.isMacOS && localDebugMode) {
+    // Location of resolved exe relative dir when run locally unpackaged:
+    // <build location>/Pieces OS.app/Contents/MacOS
+    final String contentsDir = Directory(resolvedExeDir)
+        .parent // Contents
+        .path;
+
+    final String frameworksDir = path.joinAll([contentsDir, 'Frameworks']);
+
+    return frameworksDir;
+  } else if (Platform.isMacOS) {
+    // Relative path resolved exe dir bundled:
+    // Pieces OS.app/Contents/Frameworks/App.framework/Versions/A
+    final String frameworksDir = Directory(resolvedExeDir)
+        .parent // Versions
+        .parent // App.framework
+        .parent // Frameworks
+        .path;
+
+    return frameworksDir;
+  } else if (Platform.isLinux) {
+    final String libDir = path.join(resolvedExeDir, 'lib');
+    return libDir;
+  }
+
+  return resolvedExeDir;
+}
 
 /// Build the platform-correct dynamic library filename for an FRB package.
 ///
@@ -20,11 +84,9 @@ import 'loader.dart' show fullLibraryPath;
 /// Returns an empty string if the current platform/architecture is not
 /// recognized -- callers should handle this as an error.
 String frbDynamicLibraryName(String packageName) {
-  if (Abi.current() == Abi.macosArm64) return '$packageName.dylib';
-  if (Abi.current() == Abi.macosX64) return '$packageName.dylib';
-  if (Abi.current() == Abi.windowsX64) return '$packageName.dll';
-  if (Platform.isLinux) return 'lib$packageName.so';
-  return '';
+  if (Platform.isMacOS) return fullLibraryName(packageName, includePrefix: false);
+
+  return fullLibraryName(packageName);
 }
 
 /// Resolve the full path for an FRB dynamic library.
@@ -34,14 +96,8 @@ String frbDynamicLibraryName(String packageName) {
 /// FRB libraries are NOT prefixed. On Linux they ARE prefixed, so no stripping
 /// is needed.
 String frbFullLibraryPath(String packageName) {
-  String path = fullLibraryPath(packageName);
-  final String dylibName = frbDynamicLibraryName(packageName);
-
-  if (Platform.isMacOS) {
-    path = path.replaceFirst('lib$dylibName', dylibName);
-  }
-
-  return path;
+  bool includePrefix = !Platform.isMacOS;
+  return fullLibraryPath(packageName, includePrefix: includePrefix);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -108,14 +164,10 @@ Future<void> initializeFrbLibrary({
 }) async {
   // ── Parameter validation ──
   if (libPath is String && assumeLocalResolution) {
-    throw ArgumentError(
-      'When passing in a libPath, assumeLocalResolution must explicitly be set to false.',
-    );
+    throw ArgumentError('When passing in a libPath, assumeLocalResolution must explicitly be set to false.');
   }
   if (libBytes != null && assumeLocalResolution) {
-    throw ArgumentError(
-      'When passing in libBytes, assumeLocalResolution must explicitly be set to false.',
-    );
+    throw ArgumentError('When passing in libBytes, assumeLocalResolution must explicitly be set to false.');
   }
   if (libBytes != null && libBytesCacheDir is! Directory) {
     throw ArgumentError(

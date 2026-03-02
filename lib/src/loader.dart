@@ -13,8 +13,8 @@ String systemLibExtension() {
   return Platform.isWindows
       ? '.dll'
       : Platform.isMacOS || Platform.isIOS
-          ? '.dylib'
-          : '.so';
+      ? '.dylib'
+      : '.so';
 }
 
 /// Get the default dynamic library prefix for this platform
@@ -24,7 +24,8 @@ String systemLibExtension() {
 String libraryPrefix() => Platform.operatingSystem == 'windows' ? '' : 'lib';
 
 /// Get the full dynamic library file name for this platform
-String fullLibraryName(String name) => libraryPrefix() + name + systemLibExtension();
+String fullLibraryName(String name, {bool includePrefix = true}) =>
+    (includePrefix ? libraryPrefix() : '') + name + systemLibExtension();
 
 /// Whether this is being called by dart vs a compiled application
 bool isDart() => p.basenameWithoutExtension(Platform.resolvedExecutable) == 'dart';
@@ -48,8 +49,8 @@ String _resolveLibraryPath(String fileName, {String? searchPath}) {
 }
 
 ///
-String fullLibraryPath(String libraryName, {String? searchPath}) {
-  return _resolveLibraryPath(fullLibraryName(libraryName), searchPath: searchPath);
+String fullLibraryPath(String libraryName, {String? searchPath, bool includePrefix = true}) {
+  return _resolveLibraryPath(fullLibraryName(libraryName, includePrefix: includePrefix), searchPath: searchPath);
 }
 
 /// Try to open a dynamic library, throwing verbose diagnostics on failure.
@@ -58,19 +59,23 @@ DynamicLibrary _openWithDiagnostics({required String libraryPath, required Strin
     return DynamicLibrary.open(libraryPath);
   } catch (e) {
     if (!File(libraryPath).existsSync()) {
-      throw LoadDynamicLibraryException('$displayName cannot be found at the following location\n'
-          '\tSearch Path: $searchPath\n'
-          '\tDesired Path: $libraryPath\n'
-          '\tCurrent Directory: ${p.current}\n'
-          '\tResolved Full Path: ${p.absolute(libraryPath)}\n');
+      throw LoadDynamicLibraryException(
+        '$displayName cannot be found at the following location\n'
+        '\tSearch Path: $searchPath\n'
+        '\tDesired Path: $libraryPath\n'
+        '\tCurrent Directory: ${p.current}\n'
+        '\tResolved Full Path: ${p.absolute(libraryPath)}\n',
+      );
     }
 
     ProcessResult dependencyCheckResult = callOSDependencyCheck(libraryPath);
 
-    throw LoadDynamicLibraryException('$e\n\n'
-        'Dependency Check:\n'
-        '\tstderr: ${dependencyCheckResult.stderr}\n'
-        '\tstdout: ${dependencyCheckResult.stdout}\n');
+    throw LoadDynamicLibraryException(
+      '$e\n\n'
+      'Dependency Check:\n'
+      '\tstderr: ${dependencyCheckResult.stderr}\n'
+      '\tstdout: ${dependencyCheckResult.stdout}\n',
+    );
   }
 }
 
@@ -106,8 +111,8 @@ ProcessResult callOSDependencyCheck(String libraryPath) {
   return Platform.isWindows
       ? Process.runSync('dumpbin', ['/DEPENDENTS', libraryPath])
       : Platform.isMacOS || Platform.isIOS
-          ? Process.runSync('otool', ['-L', libraryPath])
-          : Process.runSync('ldd', [libraryPath]);
+      ? Process.runSync('otool', ['-L', libraryPath])
+      : Process.runSync('ldd', [libraryPath]);
 }
 
 /// Custom Exception class for errors that occur in [loadDynamicLibrary] function
