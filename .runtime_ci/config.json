@@ -8,7 +8,7 @@
   },
   "ci": {
     "dart_sdk": "3.9.2",
-    "personal_access_token_secret": "GITHUB_TOKEN",
+    "personal_access_token_secret": "TSAVO_AT_PIECES_PERSONAL_ACCESS_TOKEN",
     "line_length": 120,
     "features": {
       "proto": false,
@@ -29,7 +29,12 @@
       "macos-x64",
       "windows-x64",
       "windows-arm64"
-    ]
+    ],
+    "_comment_runner_overrides": "Optional: override platform IDs to custom runs-on labels (for example, when certain org runners are unavailable).",
+    "runner_overrides": {
+      "ubuntu-x64": "ubuntu-latest",
+      "windows-x64": "windows-latest"
+    }
   },
   "gcp": {
     "project": ""
