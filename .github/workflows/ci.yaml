@@ -144,7 +144,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include: [{"platform_id":"ubuntu-x64","runner":"runtime-ubuntu-24.04-x64-256gb-64core","os_family":"linux","arch":"x64"},{"platform_id":"ubuntu-arm64","runner":"runtime-ubuntu-24.04-arm64-208gb-64core","os_family":"linux","arch":"arm64"},{"platform_id":"macos-arm64","runner":"macos-latest","os_family":"macos","arch":"arm64"},{"platform_id":"macos-x64","runner":"macos-15-large","os_family":"macos","arch":"x64"},{"platform_id":"windows-x64","runner":"runtime-windows-2025-x64-256gb-64core","os_family":"windows","arch":"x64"},{"platform_id":"windows-arm64","runner":"runtime-windows-11-arm64-208gb-64core","os_family":"windows","arch":"arm64"}]
+        include: [{"platform_id":"ubuntu-x64","runner":"ubuntu-latest","os_family":"linux","arch":"x64"},{"platform_id":"ubuntu-arm64","runner":"runtime-ubuntu-24.04-arm64-208gb-64core","os_family":"linux","arch":"arm64"},{"platform_id":"macos-arm64","runner":"macos-latest","os_family":"macos","arch":"arm64"},{"platform_id":"macos-x64","runner":"macos-15-large","os_family":"macos","arch":"x64"},{"platform_id":"windows-x64","runner":"windows-latest","os_family":"windows","arch":"x64"},{"platform_id":"windows-arm64","runner":"runtime-windows-11-arm64-208gb-64core","os_family":"windows","arch":"arm64"}]
     steps:
       # ── shared:checkout ── keep in sync with single_platform ──
       - uses: actions/checkout@v6.0.2
