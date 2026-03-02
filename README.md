@@ -4,9 +4,6 @@
 [![License: MIT][license_badge]][license_badge_link]
 [![style: runtime_lints][style_badge]][style_badge_link]
 
-> **_NOTE:_**  This package is currently released under `0.*.*` version semantics and should not
-> be considered to have a stable API until version `1.*.*`
-
 This Dart package is focused on providing better experiences related to `DynamicLibrary` usage in 
 Dart and Flutter projects. This package is used internally at [Pieces.app][pieces_link] and [Runtime.dev][runtime_link]
 
@@ -29,6 +26,7 @@ This package follows the traditional dart package layout:
 
 * `example` - example usage
 * `lib` - source code
+* `scripts/` - utility scripts, including prompt generators for autodoc
 * `test` - tests
 
 This project also has more source code is are used to verify the unique requirements of 
@@ -38,6 +36,17 @@ in CI/CD and are checked manually for releases, but this will be resolved in the
 * `flutter_example/` - flutter application to use to test out dynamic library loading
   in a bundled application
 * `rust_*/` - the rust folders are used to build dynamic libraries for testing
+
+## Scripts
+
+The `scripts/prompts/` directory contains tools to generate structured prompts for LLM-assisted documentation writing (`autodoc`). These can be used to draft API references, examples, and quickstarts:
+
+* **API Reference Prompt Generator:**
+  `dart run scripts/prompts/autodoc_api_reference_prompt.dart <module_name> <source_dir> [lib_dir]`
+* **Examples Prompt Generator:**
+  `dart run scripts/prompts/autodoc_examples_prompt.dart <module_name> <source_dir> [lib_dir]`
+* **Quickstart Prompt Generator:**
+  `dart run scripts/prompts/autodoc_quickstart_prompt.dart <module_name> <source_dir> [lib_dir]`
 
 ## Usage
 
@@ -50,6 +59,8 @@ environments.
 
 
 ## Contributing
+
+This package uses `runtime_ci_tooling` as a development dependency for repository scaffolding, CI, and release workflows.
 
 This package is [maintained on Github][repo_link]
 
