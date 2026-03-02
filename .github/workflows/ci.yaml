@@ -2,6 +2,10 @@
 # Configured via .runtime_ci/config.json — run 'dart run runtime_ci_tooling:manage_cicd update --workflows' to regenerate.
 name: CI
 
+permissions:
+  contents: read
+  packages: read
+
 on:
   push:
     branches: [main]
@@ -93,7 +97,7 @@ jobs:
       - name: Configure Git for HTTPS with Token
         shell: bash
         run: |
-          TOKEN="${{ secrets.GITHUB_TOKEN || secrets.GITHUB_TOKEN }}"
+          TOKEN="${{ secrets.TSAVO_AT_PIECES_PERSONAL_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}"
           echo "::add-mask::${TOKEN}"
           git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git@github.com:"
           git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "ssh://git@github.com/"
@@ -153,7 +157,7 @@ jobs:
       - name: Configure Git for HTTPS with Token
         shell: bash
         run: |
-          TOKEN="${{ secrets.GITHUB_TOKEN || secrets.GITHUB_TOKEN }}"
+          TOKEN="${{ secrets.TSAVO_AT_PIECES_PERSONAL_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}"
           echo "::add-mask::${TOKEN}"
           git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git@github.com:"
           git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "ssh://git@github.com/"
