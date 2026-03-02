@@ -108,14 +108,10 @@ Future<void> initializeFrbLibrary({
 }) async {
   // ── Parameter validation ──
   if (libPath is String && assumeLocalResolution) {
-    throw ArgumentError(
-      'When passing in a libPath, assumeLocalResolution must explicitly be set to false.',
-    );
+    throw ArgumentError('When passing in a libPath, assumeLocalResolution must explicitly be set to false.');
   }
   if (libBytes != null && assumeLocalResolution) {
-    throw ArgumentError(
-      'When passing in libBytes, assumeLocalResolution must explicitly be set to false.',
-    );
+    throw ArgumentError('When passing in libBytes, assumeLocalResolution must explicitly be set to false.');
   }
   if (libBytes != null && libBytesCacheDir is! Directory) {
     throw ArgumentError(
