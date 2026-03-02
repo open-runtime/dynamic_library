@@ -33,3 +33,5 @@ doc/api/
 
 # Rust library samples for testing
 **/target
+# Runtime CI audit trails (local only)
+.runtime_ci/runs/

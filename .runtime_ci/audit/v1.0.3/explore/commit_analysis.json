@@ -1,0 +1,57 @@
+{
+  "version": "1.0.3",
+  "previous_version": "v1.0.2",
+  "total_commits": 6,
+  "categories": {
+    "added": [
+      {
+        "description": "Initialized runtime_ci_tooling scaffolding for the repository, including CI, issue triage, and release workflows",
+        "pr": "#8",
+        "commits": ["76448a9", "a0a2f59"]
+      },
+      {
+        "description": "Added autodoc configuration and prompt generators for automated documentation generation",
+        "pr": "#8",
+        "commits": ["76448a9"]
+      },
+      {
+        "description": "Added Gemini CLI commands and settings for repository management",
+        "pr": "#8",
+        "commits": ["76448a9"]
+      }
+    ],
+    "changed": [
+      {
+        "description": "Aligned runtime CI runner overrides in the config to drive runner and token behavior from configuration",
+        "pr": "",
+        "commits": ["845cd8f"]
+      },
+      {
+        "description": "Applied dart format to library files with line-length 120",
+        "pr": "#8",
+        "commits": ["f2b4500"]
+      }
+    ],
+    "deprecated": [],
+    "removed": [],
+    "fixed": [
+      {
+        "description": "Unblocked queued x64 jobs on hosted runners by routing ubuntu-x64 and windows-x64 matrix entries to GitHub-hosted runner labels",
+        "pr": "#8",
+        "commits": ["4d11b4f"]
+      },
+      {
+        "description": "Addressed high-priority workflow review findings, corrected token fallback expressions, and guarded Gemini CLI installation",
+        "pr": "#8",
+        "commits": ["a5bf991"]
+      }
+    ],
+    "security": [
+      {
+        "description": "Added explicit least-privilege permissions to CI workflows to improve security",
+        "pr": "#8",
+        "commits": ["a5bf991"]
+      }
+    ]
+  }
+}

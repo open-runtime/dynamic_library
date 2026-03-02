@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "gemini_model": "gemini-3.1-pro-preview",
+  "max_concurrent": 4,
+  "modules": [
+    {
+      "id": "core",
+      "name": "Dynamic Library Core",
+      "source_paths": [
+        "lib/"
+      ],
+      "lib_paths": [
+        "lib/"
+      ],
+      "output_path": "docs/",
+      "generate": [
+        "quickstart",
+        "api_reference",
+        "examples"
+      ],
+      "hash": "8b2bf693f779461a0648daec0a1f2789abf544cc6e6360f221a45aac2e006661",
+      "last_updated": "2026-03-02T20:34:01.485513Z"
+    }
+  ],
+  "templates": {
+    "quickstart": "scripts/prompts/autodoc_quickstart_prompt.dart",
+    "api_reference": "scripts/prompts/autodoc_api_reference_prompt.dart",
+    "examples": "scripts/prompts/autodoc_examples_prompt.dart"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "tooling_version": "0.14.1",
+  "updated_at": "2026-03-02T19:12:08.989376Z",
+  "templates": {
+    "gemini_settings": {
+      "hash": "93983f49dd2f40d2ed245271854946d8916b8f0698ed2cfaf12058305baa0b08",
+      "consumer_hash": "93983f49dd2f40d2ed245271854946d8916b8f0698ed2cfaf12058305baa0b08",
+      "updated_at": "2026-03-02T19:09:58.103455Z"
+    },
+    "gemini_cmd_changelog": {
+      "hash": "b905f4277ab5ea65ea63e756d344052d2162a5eb1d3ab1d6b3c1bb9b5b585032",
+      "consumer_hash": "b905f4277ab5ea65ea63e756d344052d2162a5eb1d3ab1d6b3c1bb9b5b585032",
+      "updated_at": "2026-03-02T19:09:58.104356Z"
+    },
+    "gemini_cmd_release_notes": {
+      "hash": "04fb36544422b7d764a8fde1dad36d8acfabc891ea56b2b5da7152c517e3728c",
+      "consumer_hash": "04fb36544422b7d764a8fde1dad36d8acfabc891ea56b2b5da7152c517e3728c",
+      "updated_at": "2026-03-02T19:09:58.104913Z"
+    },
+    "gemini_cmd_triage": {
+      "hash": "4cb05a69d01afa88b6802d24e4e2e00735398c8559572e88ea37e3d2dbc9d072",
+      "consumer_hash": "4cb05a69d01afa88b6802d24e4e2e00735398c8559572e88ea37e3d2dbc9d072",
+      "updated_at": "2026-03-02T19:09:58.105443Z"
+    },
+    "config_json": {
+      "hash": "5e31a411b1d0cdceff479ac6406573cd41f8614e3cc501274454f615fe5e5275",
+      "consumer_hash": "8c22b0d408e163b8d5d5589fb1e664d180555c70e472e5535d2bd4f55a86b909",
+      "updated_at": "2026-03-02T19:09:58.107944Z"
+    },
+    "workflow_ci": {
+      "hash": "fa46da42c95dd420ebcaa28847ef76e6c5f5e634d9b62ddcfa11da6f561fa1c9",
+      "consumer_hash": "85e4e51838d24fd21a25cdff72f88eb859f6330969e82192e50361232091fa79",
+      "updated_at": "2026-03-02T19:12:08.990561Z"
+    },
+    "workflow_release": {
+      "hash": "ed0e8fb331d9c3d8827a71d320408d5ff603dcc1449eb2f6ee20b115469e0bd9",
+      "consumer_hash": "ed0e8fb331d9c3d8827a71d320408d5ff603dcc1449eb2f6ee20b115469e0bd9",
+      "updated_at": "2026-03-02T19:09:58.122618Z"
+    },
+    "workflow_issue_triage": {
+      "hash": "960012c66f7a59ac16ed89d6c7d34244ef1dd16efb6c0a66244431ad49e0f28e",
+      "consumer_hash": "960012c66f7a59ac16ed89d6c7d34244ef1dd16efb6c0a66244431ad49e0f28e",
+      "updated_at": "2026-03-02T19:09:58.123159Z"
+    }
+  }
+}

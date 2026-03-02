@@ -1,3 +1,28 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.0.3] - 2026-03-02
+
+### Added
+- Initialized runtime_ci_tooling scaffolding for the repository, including CI, issue triage, and release workflows (#8)
+- Added autodoc configuration and prompt generators for automated documentation generation (#8)
+- Added Gemini CLI commands and settings for repository management (#8)
+
+### Changed
+- Aligned runtime CI runner overrides in the config to drive runner and token behavior from configuration
+- Applied dart format to library files with line-length 120 (#8)
+
+### Fixed
+- Unblocked queued x64 jobs on hosted runners by routing ubuntu-x64 and windows-x64 matrix entries to GitHub-hosted runner labels (#8)
+- Addressed high-priority workflow review findings, corrected token fallback expressions, and guarded Gemini CLI installation (#8)
+
+### Security
+- Added explicit least-privilege permissions to CI workflows to improve security (#8)
+
 ## 1.0.2
 
 - Refactored shared loader logic: extracted `_resolveLibraryPath` and `_openWithDiagnostics` to deduplicate `loadDynamicLibrary` and `loadDynamicLibraryRaw`
@@ -69,3 +94,5 @@ Breaking Changes:
 ## 0.1.0
 
 - Initial version.
+
+[1.0.3]: https://github.com/open-runtime/dynamic_library/releases/tag/v1.0.3
