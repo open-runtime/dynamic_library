@@ -5,8 +5,7 @@ import 'dart:typed_data' show ByteData;
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart' show ExternalLibrary;
 import 'package:path/path.dart' as path;
 
-import '../dynamic_library.dart';
-import 'loader.dart' show fullLibraryPath;
+import 'loader.dart' show fullLibraryPath, fullLibraryName;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Tier A: Helpers (building blocks)
@@ -80,9 +79,6 @@ String defaultLibraryDirectory({bool localDebugMode = false}) {
 /// accounts for the FRB convention where macOS libraries are NOT prefixed
 /// with `lib` (e.g. `runtime_native_audio.dylib`), while Linux libraries
 /// ARE prefixed (e.g. `libruntime_native_audio.so`).
-///
-/// Returns an empty string if the current platform/architecture is not
-/// recognized -- callers should handle this as an error.
 String frbDynamicLibraryName(String packageName) {
   if (Platform.isMacOS) return fullLibraryName(packageName, includePrefix: false);
 
