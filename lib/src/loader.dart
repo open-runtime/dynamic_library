@@ -24,7 +24,8 @@ String systemLibExtension() {
 String libraryPrefix() => Platform.operatingSystem == 'windows' ? '' : 'lib';
 
 /// Get the full dynamic library file name for this platform
-String fullLibraryName(String name) => libraryPrefix() + name + systemLibExtension();
+String fullLibraryName(String name, {bool includePrefix = true}) =>
+    (includePrefix ? libraryPrefix() : '') + name + systemLibExtension();
 
 /// Whether this is being called by dart vs a compiled application
 bool isDart() => p.basenameWithoutExtension(Platform.resolvedExecutable) == 'dart';
@@ -48,8 +49,8 @@ String _resolveLibraryPath(String fileName, {String? searchPath}) {
 }
 
 ///
-String fullLibraryPath(String libraryName, {String? searchPath}) {
-  return _resolveLibraryPath(fullLibraryName(libraryName), searchPath: searchPath);
+String fullLibraryPath(String libraryName, {String? searchPath, bool includePrefix = true}) {
+  return _resolveLibraryPath(fullLibraryName(libraryName, includePrefix: includePrefix), searchPath: searchPath);
 }
 
 /// Try to open a dynamic library, throwing verbose diagnostics on failure.
