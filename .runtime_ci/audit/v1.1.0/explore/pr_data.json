@@ -1,0 +1,17 @@
+{
+  "pull_requests": [
+    {
+      "number": 9,
+      "title": "Modified: added flutterAssetsDirectory and defaultLibraryDirectory functions …",
+      "author": "robert-at-pieces",
+      "labels": [],
+      "summary": "Added utility functions to resolve Flutter asset directories and default dynamic library search paths across platforms. Added flexibility to omit library prefix for backwards compatibility and updated dependencies.",
+      "commits": [
+        "f30b031fabe62dc6329c8dc455eeb16ae5eff2c4",
+        "ae2af973da0280a5a9174b9bfea592a1e27a246e",
+        "01beec2248f09b6145432a51d7993529a4dc7623",
+        "753ae960b2e00ed246c5dec9a2dc62ea3bbd32d9"
+      ]
+    }
+  ]
+}

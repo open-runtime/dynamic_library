@@ -1,0 +1,56 @@
+{
+  "version": "1.1.0",
+  "previous_version": "v1.0.3",
+  "total_commits": 5,
+  "categories": {
+    "added": [
+      {
+        "description": "Added flutterAssetsDirectory and defaultLibraryDirectory functions to assist in dependency resolution for different platforms.",
+        "pr": "#9",
+        "commits": ["f30b031fabe62dc6329c8dc455eeb16ae5eff2c4"]
+      },
+      {
+        "description": "Added optional includePrefix argument to fullLibraryName and fullLibraryPath functions to toggle lib prefix for backward compatibility.",
+        "pr": "#9",
+        "commits": ["f30b031fabe62dc6329c8dc455eeb16ae5eff2c4"]
+      }
+    ],
+    "changed": [
+      {
+        "description": "Bumped flutter_rust_bridge dependency to ^2.11.1.",
+        "pr": "#9",
+        "commits": ["f30b031fabe62dc6329c8dc455eeb16ae5eff2c4"]
+      },
+      {
+        "description": "Downgraded version from 1.1.0 to 1.0.9 in pubspec.yaml.",
+        "pr": "",
+        "commits": ["979b087b913a93a39b50df04496e1015f2a627d6"]
+      },
+      {
+        "description": "Added *.iml to .gitignore.",
+        "pr": "#9",
+        "commits": ["ae2af973da0280a5a9174b9bfea592a1e27a246e"]
+      },
+      {
+        "description": "Merged main into feat/dep_resolution_enhancement.",
+        "pr": "#9",
+        "commits": ["01beec2248f09b6145432a51d7993529a4dc7623"]
+      },
+      {
+        "description": "Merged pull request #9 from open-runtime/feat/dep_resolution_enhancement.",
+        "pr": "#9",
+        "commits": ["753ae960b2e00ed246c5dec9a2dc62ea3bbd32d9"]
+      }
+    ],
+    "deprecated": [],
+    "removed": [],
+    "fixed": [
+      {
+        "description": "Resolved circular import and updated out-of-date function comments.",
+        "pr": "#9",
+        "commits": ["ae2af973da0280a5a9174b9bfea592a1e27a246e"]
+      }
+    ],
+    "security": []
+  }
+}

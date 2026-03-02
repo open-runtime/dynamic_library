@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-03-02
+
+### Added
+- Added `flutterAssetsDirectory` and `defaultLibraryDirectory` functions to assist in dependency resolution for different platforms (#9)
+- Added optional `includePrefix` argument to `fullLibraryName` and `fullLibraryPath` functions to toggle lib prefix for backward compatibility (#9)
+
+### Changed
+- Bumped `flutter_rust_bridge` dependency to `^2.11.1` (#9)
+
+### Fixed
+- Resolved circular import and updated out-of-date function comments (#9)
+
 ## [1.0.3] - 2026-03-02
 
 ### Added
@@ -95,4 +107,5 @@ Breaking Changes:
 
 - Initial version.
 
+[1.1.0]: https://github.com/open-runtime/dynamic_library/compare/v1.0.3...v1.1.0
 [1.0.3]: https://github.com/open-runtime/dynamic_library/releases/tag/v1.0.3

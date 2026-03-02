@@ -20,6 +20,13 @@ than 'DynamicLibrary fails to load'. When deploying multiple dynamic libraries a
 traceability to know if the dynamic library doesn't exist, isn't in the right place or is missing dependencies to
 better inform the developer on proper debugging steps or work scope estimation.
 
+## Features
+
+* **Descriptive Errors**: Traceability to know if the dynamic library doesn't exist, isn't in the right place, or is missing dependencies.
+* **Dependency Resolution**: Includes `flutterAssetsDirectory` and `defaultLibraryDirectory` functions to assist in dependency resolution across different platforms.
+* **Path Customization**: The `fullLibraryName` and `fullLibraryPath` functions support an optional `includePrefix` argument to toggle the `lib` prefix, ensuring backward compatibility.
+* **Flutter Rust Bridge Support**: Integrates with and supports initialization of `flutter_rust_bridge` packages (v2.11.1+).
+
 ## Project Layout
 
 This package follows the traditional dart package layout:
