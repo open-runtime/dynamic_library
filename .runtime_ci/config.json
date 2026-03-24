@@ -17,7 +17,8 @@
       "analysis_cache": true,
       "managed_analyze": true,
       "managed_test": true,
-      "build_runner": false
+      "build_runner": false,
+      "autodoc": true
     },
     "secrets": {},
     "sub_packages": [],
