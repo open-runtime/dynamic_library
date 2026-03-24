@@ -1,0 +1,35 @@
+{
+  "version": "1.1.1",
+  "previous_version": "v1.1.0",
+  "total_commits": 5,
+  "categories": {
+    "added": [
+      {
+        "description": "Added autodoc safety policy to restrict docs-only runs to markdown outputs.",
+        "pr": null,
+        "commits": ["9c9401d"]
+      }
+    ],
+    "changed": [
+      {
+        "description": "Regenerated and upgraded CI/CD workflows from runtime_ci_tooling v0.23.7 to v0.23.10, including node 24 overrides, autodoc artifact flow fixes, and renaming prepare-release-docs.",
+        "pr": null,
+        "commits": ["9c9401d", "875672f", "cb183d8"]
+      },
+      {
+        "description": "Aligned Dart workspace resolution and dependency constraints.",
+        "pr": null,
+        "commits": ["1008f98"]
+      },
+      {
+        "description": "Applied dart format --line-length 120 across the codebase.",
+        "pr": null,
+        "commits": ["e365888"]
+      }
+    ],
+    "deprecated": [],
+    "removed": [],
+    "fixed": [],
+    "security": []
+  }
+}

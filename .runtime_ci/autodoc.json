@@ -12,14 +12,14 @@
       "lib_paths": [
         "lib/"
       ],
-      "output_path": "docs/",
+      "output_path": "docs",
       "generate": [
         "quickstart",
         "api_reference",
         "examples"
       ],
-      "hash": "6c759a7cda4801f89df6207c3ccb158de99178599ca1a17d481fe4f698145ba5",
-      "last_updated": "2026-03-02T22:10:36.279736Z"
+      "hash": "01fb212891e172b973dee76cace1ff45795a32baf59f8ac9ebfc4ea018646f4f",
+      "last_updated": "2026-03-24T18:31:37.169759Z"
     }
   ],
   "templates": {

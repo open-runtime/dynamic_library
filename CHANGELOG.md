@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2026-03-24
+
+### Added
+- Added autodoc safety policy to restrict docs-only runs to markdown outputs
+
+### Changed
+- Regenerated and upgraded CI/CD workflows from runtime_ci_tooling v0.23.7 to v0.23.10, including node 24 overrides, autodoc artifact flow fixes, and renaming prepare-release-docs
+- Aligned Dart workspace resolution and dependency constraints
+- Applied dart format --line-length 120 across the codebase
+
 ## [1.1.0] - 2026-03-02
 
 ### Added
@@ -107,5 +117,6 @@ Breaking Changes:
 
 - Initial version.
 
+[1.1.1]: https://github.com/open-runtime/dynamic_library/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/open-runtime/dynamic_library/compare/v1.0.3...v1.1.0
 [1.0.3]: https://github.com/open-runtime/dynamic_library/releases/tag/v1.0.3
