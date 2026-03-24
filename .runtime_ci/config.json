@@ -33,7 +33,9 @@
     "_comment_runner_overrides": "Optional: override platform IDs to custom runs-on labels (for example, when certain org runners are unavailable).",
     "runner_overrides": {
       "ubuntu-x64": "ubuntu-latest",
-      "windows-x64": "windows-latest"
+      "windows-x64": "windows-latest",
+      "ubuntu-arm64": "runtime-ubuntu-24.04-arm64-208gb-64core",
+      "windows-arm64": "runtime-windows-11-arm64-208gb-64core"
     }
   },
   "gcp": {
