@@ -8,9 +8,7 @@ import 'dart:io';
 ///   dart run scripts/prompts/autodoc_api_reference_prompt.dart <module_name> <source_dir> [lib_dir]
 void main(List<String> args) {
   if (args.length < 2) {
-    stderr.writeln(
-      'Usage: autodoc_api_reference_prompt.dart <module_name> <source_dir> [lib_dir]',
-    );
+    stderr.writeln('Usage: autodoc_api_reference_prompt.dart <module_name> <source_dir> [lib_dir]');
     exit(1);
   }
 
@@ -77,11 +75,7 @@ Generate the complete API_REFERENCE.md content.
 
 String _runSync(String command) {
   try {
-    final result = Process.runSync(
-      'sh',
-      ['-c', command],
-      workingDirectory: Directory.current.path,
-    );
+    final result = Process.runSync('sh', ['-c', command], workingDirectory: Directory.current.path);
     if (result.exitCode == 0) return (result.stdout as String).trim();
     return '';
   } catch (_) {

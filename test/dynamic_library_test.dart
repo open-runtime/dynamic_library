@@ -20,8 +20,10 @@ void main() {
 
   group('loadDynamicLibrary exceptions', () {
     test('fails to find directory', () {
-      expect(() => loadDynamicLibrary(libraryName: 'doesntexist', searchPath: 'path/to/nowhere'),
-          throwsA(isA<LoadDynamicLibraryException>()));
+      expect(
+        () => loadDynamicLibrary(libraryName: 'doesntexist', searchPath: 'path/to/nowhere'),
+        throwsA(isA<LoadDynamicLibraryException>()),
+      );
     });
 
     test('fails to find file', () {
@@ -31,8 +33,10 @@ void main() {
 
   group('loadDynamicLibraryRaw exceptions', () {
     test('fails to find directory', () {
-      expect(() => loadDynamicLibraryRaw(fileName: 'doesntexist.so', searchPath: 'path/to/nowhere'),
-          throwsA(isA<LoadDynamicLibraryException>()));
+      expect(
+        () => loadDynamicLibraryRaw(fileName: 'doesntexist.so', searchPath: 'path/to/nowhere'),
+        throwsA(isA<LoadDynamicLibraryException>()),
+      );
     });
 
     test('fails to find file', () {
