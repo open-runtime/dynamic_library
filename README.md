@@ -5,20 +5,29 @@
 [![style: runtime_lints][style_badge]][style_badge_link]
 
 This Dart package is focused on providing better experiences related to `DynamicLibrary` usage in 
-Dart and Flutter projects. This package is used internally at [Pieces.app][pieces_link] and [Runtime.dev][runtime_link]
+Dart and Flutter projects. This package is used internally at [Pieces.app][pieces_link] and [Runtime.dev][runtime_link].
 
 We considered using the [dylib](https://pub.dev/packages/dylib) package but found it insufficient to provide
 descriptive errors when working with dynamic libraries on Dart and Flutter Applications. Dynamic libraries could
 fail to load for any one of the following reasons:
 
 * The file doesn't exist
-* The directory doesn't exist that we are searching in
+* The directory we are searching in doesn't exist
 * The dynamic library is missing dependencies
 
 The implementation of `DynamicLibrary` in the dart standard library fails to say essentially anything other 
 than 'DynamicLibrary fails to load'. When deploying multiple dynamic libraries across multiple platforms, we really need
-traceability to know if the dynamic library doesn't exist, isn't in the right place or is missing dependencies to
+traceability to know if the dynamic library doesn't exist, isn't in the right place, or is missing dependencies to
 better inform the developer on proper debugging steps or work scope estimation.
+
+## Installation
+
+Add the following to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  dynamic_library: ^1.1.1
+```
 
 ## Features
 
@@ -36,7 +45,7 @@ This package follows the traditional dart package layout:
 * `scripts/` - utility scripts, including prompt generators for autodoc
 * `test` - tests
 
-This project also has more source code is are used to verify the unique requirements of 
+This project also has more source code that is used to verify the unique requirements of 
 dynamic libraries for Flutter applications + Dart applications. These tests are currently not
 in CI/CD and are checked manually for releases, but this will be resolved in the future.
 
@@ -57,10 +66,13 @@ The `scripts/prompts/` directory contains tools to generate structured prompts f
 
 ## Usage
 
-TODO: Include snippets and examples
+For comprehensive instructions, see our core documentation:
+* [Quickstart](docs/QUICKSTART.md)
+* [Examples](docs/EXAMPLES.md)
+* [API Reference](docs/API_REFERENCE.md)
 
-Note: It is recommended to not use `searchPaths` when using this library in compiled applications as there are a 
-lot of cross-platform variables to consider in your application. This `searchPaths` parameter is more useful for
+Note: It is recommended to not use `searchPath` when using this library in compiled applications as there are a 
+lot of cross-platform variables to consider in your application. This `searchPath` parameter is more useful for
 running dart code in a development environment (with binaries in various locations), instead of in production 
 environments.
 

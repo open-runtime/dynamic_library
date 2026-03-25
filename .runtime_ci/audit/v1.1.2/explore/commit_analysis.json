@@ -1,0 +1,45 @@
+{
+  "version": "1.1.2",
+  "previous_version": "v1.1.1",
+  "total_commits": 5,
+  "categories": {
+    "added": [
+      {
+        "description": "Added read_file, read_many_files, write_file, replace, glob, grep_search, list_directory to settings.json tools.core",
+        "pr": null,
+        "commits": ["ff00d871a24edf4e86e46ef9f1b3f176dc331ca6"]
+      },
+      {
+        "description": "Configured autodoc CI to use gemini-3-flash-preview for doc reviews",
+        "pr": null,
+        "commits": ["c56ad80b02ea1227f2b67cdde07c382be043f606"]
+      }
+    ],
+    "changed": [
+      {
+        "description": "Updated autodoc-safety.toml policy and regenerated workflow templates",
+        "pr": null,
+        "commits": ["ff00d871a24edf4e86e46ef9f1b3f176dc331ca6"]
+      },
+      {
+        "description": "Regenerated CI workflows with auto-autodoc Gemini regeneration enabled",
+        "pr": null,
+        "commits": ["6b700a3d18561ce56b19e578c0bc5d5b51b3589e"]
+      },
+      {
+        "description": "Bumped setup-dart to v1.7.2 and regenerated from latest templates",
+        "pr": null,
+        "commits": ["bf847b0e25eccbb628269f53587df967c9288161"]
+      },
+      {
+        "description": "Regenerated CI workflows from runtime_ci_tooling v0.23.10",
+        "pr": null,
+        "commits": ["bd5b0cb2ee601d7b21ec77b6778e955a418f7157"]
+      }
+    ],
+    "deprecated": [],
+    "removed": [],
+    "fixed": [],
+    "security": []
+  }
+}
