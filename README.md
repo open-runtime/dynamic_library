@@ -8,14 +8,14 @@ This Dart package is focused on providing better experiences related to `Dynamic
 Dart and Flutter projects. This package is used internally at [Pieces.app][pieces_link] and [Runtime.dev][runtime_link].
 
 We considered using the [dylib](https://pub.dev/packages/dylib) package but found it insufficient to provide
-descriptive errors when working with dynamic libraries on Dart and Flutter Applications. Dynamic libraries could
+descriptive errors when working with dynamic libraries in Dart and Flutter applications. Dynamic libraries could
 fail to load for any one of the following reasons:
 
 * The file doesn't exist
 * The directory we are searching in doesn't exist
 * The dynamic library is missing dependencies
 
-The implementation of `DynamicLibrary` in the dart standard library fails to say essentially anything other 
+The implementation of `DynamicLibrary` in the Dart standard library fails to say essentially anything other 
 than 'DynamicLibrary fails to load'. When deploying multiple dynamic libraries across multiple platforms, we really need
 traceability to know if the dynamic library doesn't exist, isn't in the right place, or is missing dependencies to
 better inform the developer on proper debugging steps or work scope estimation.
@@ -26,7 +26,7 @@ Add the following to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  dynamic_library: ^1.1.1
+  dynamic_library: ^1.1.2
 ```
 
 ## Features
@@ -38,7 +38,7 @@ dependencies:
 
 ## Project Layout
 
-This package follows the traditional dart package layout:
+This package follows the traditional Dart package layout:
 
 * `example` - example usage
 * `lib` - source code
@@ -49,9 +49,9 @@ This project also has more source code that is used to verify the unique require
 dynamic libraries for Flutter applications + Dart applications. These tests are currently not
 in CI/CD and are checked manually for releases, but this will be resolved in the future.
 
-* `flutter_example/` - flutter application to use to test out dynamic library loading
+* `flutter_example/` - Flutter application to use to test out dynamic library loading
   in a bundled application
-* `rust_*/` - the rust folders are used to build dynamic libraries for testing
+* `rust_*/` - the Rust folders are used to build dynamic libraries for testing
 
 ## Scripts
 
@@ -66,14 +66,14 @@ The `scripts/prompts/` directory contains tools to generate structured prompts f
 
 ## Usage
 
-For comprehensive instructions, see our core documentation:
+For comprehensive instructions, see our Dynamic Library Core documentation:
 * [Quickstart](docs/QUICKSTART.md)
 * [Examples](docs/EXAMPLES.md)
 * [API Reference](docs/API_REFERENCE.md)
 
 Note: It is recommended to not use `searchPath` when using this library in compiled applications as there are a 
 lot of cross-platform variables to consider in your application. This `searchPath` parameter is more useful for
-running dart code in a development environment (with binaries in various locations), instead of in production 
+running Dart code in a development environment (with binaries in various locations), instead of in production 
 environments.
 
 
@@ -81,7 +81,7 @@ environments.
 
 This package uses `runtime_ci_tooling` as a development dependency for repository scaffolding, CI, and release workflows.
 
-This package is [maintained on Github][repo_link]
+This package is [maintained on GitHub][repo_link]
 
 [analysis_options_yaml]: https://github.com/open-runtime/dynamic_library/blob/main/analysis_options.yaml
 [ci_badge]: https://github.com/open-runtime/dynamic_library/workflows/ci/badge.svg
