@@ -26,7 +26,7 @@ Add the following to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  dynamic_library: ^1.1.2
+  dynamic_library: ^1.1.3
 ```
 
 ## Features
@@ -79,7 +79,7 @@ environments.
 
 ## Contributing
 
-This package uses `runtime_ci_tooling` as a development dependency for repository scaffolding, CI, and release workflows.
+This package uses `runtime_ci_tooling` (via global activation) for repository scaffolding, CI, and release workflows.
 
 This package is [maintained on GitHub][repo_link]
 

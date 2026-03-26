@@ -1,0 +1,12 @@
+{
+  "version": "1.1.4",
+  "github_issues": [],
+  "sentry_issues": [],
+  "prs_referenced": [
+    {
+      "number": 10,
+      "title": "chore: remove runtime_ci_tooling dev_dependency",
+      "author": "Tsavo Knott"
+    }
+  ]
+}

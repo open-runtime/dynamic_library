@@ -1,0 +1,82 @@
+{
+  "command": "merged-audit",
+  "started_at": "2026-03-26T21:16:18.913742",
+  "merged_from": [
+    {
+      "artifact": "cicd-audit-explore",
+      "command": "explore",
+      "args": [],
+      "started_at": "2026-03-26T20:59:49.147702",
+      "pid": 2664,
+      "platform": "linux",
+      "dart_version": "3.9.2",
+      "repo_root": "/home/runner/work/dynamic_library/dynamic_library",
+      "run_dir": "/home/runner/work/dynamic_library/dynamic_library/.runtime_ci/runs/run_2026-03-26T20-59-49_2664",
+      "ci": true,
+      "completed_at": "2026-03-26T21:06:52.611510",
+      "duration_seconds": 423,
+      "exit_code": 0,
+      "artifacts": [
+        "explore/prompt.txt",
+        "explore/gemini_response.json",
+        "meta.json"
+      ]
+    },
+    {
+      "artifact": "cicd-audit-prepare-release-docs",
+      "command": "documentation",
+      "args": [],
+      "started_at": "2026-03-26T21:09:08.899407",
+      "pid": 5227,
+      "platform": "linux",
+      "dart_version": "3.9.2",
+      "repo_root": "/home/runner/work/dynamic_library/dynamic_library",
+      "run_dir": "/home/runner/work/dynamic_library/dynamic_library/.runtime_ci/runs/run_2026-03-26T21-09-08_5227",
+      "ci": true
+    },
+    {
+      "artifact": "cicd-audit-prepare-release-docs",
+      "command": "compose",
+      "args": [],
+      "started_at": "2026-03-26T21:07:55.777722",
+      "pid": 2793,
+      "platform": "linux",
+      "dart_version": "3.9.2",
+      "repo_root": "/home/runner/work/dynamic_library/dynamic_library",
+      "run_dir": "/home/runner/work/dynamic_library/dynamic_library/.runtime_ci/runs/run_2026-03-26T21-07-55_2793",
+      "ci": true,
+      "completed_at": "2026-03-26T21:09:08.497520",
+      "duration_seconds": 72,
+      "artifacts": [
+        "meta.json",
+        "compose/gemini_response.json",
+        "compose/prompt.txt"
+      ]
+    },
+    {
+      "artifact": "cicd-audit-release-notes",
+      "command": "release-notes",
+      "args": [],
+      "started_at": "2026-03-26T21:12:45.434411",
+      "pid": 2782,
+      "platform": "linux",
+      "dart_version": "3.9.2",
+      "repo_root": "/home/runner/work/dynamic_library/dynamic_library",
+      "run_dir": "/home/runner/work/dynamic_library/dynamic_library/.runtime_ci/runs/run_2026-03-26T21-12-45_2782",
+      "ci": true,
+      "completed_at": "2026-03-26T21:15:55.758325",
+      "duration_seconds": 190,
+      "artifacts": [
+        "meta.json",
+        "release-notes/release_notes.md",
+        "release-notes/gemini_response.json",
+        "release-notes/prompt.txt"
+      ]
+    }
+  ],
+  "artifact_count": 5,
+  "total_files": 18,
+  "ci": true,
+  "platform": "linux",
+  "dart_version": "3.9.2"
+}

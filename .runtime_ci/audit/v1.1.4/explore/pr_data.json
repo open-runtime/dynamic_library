@@ -1,0 +1,15 @@
+{
+  "pull_requests": [
+    {
+      "number": 10,
+      "title": "chore: remove runtime_ci_tooling dev_dependency",
+      "author": "Tsavo Knott",
+      "labels": [],
+      "summary": "Removes the `runtime_ci_tooling` dev_dependency from `pubspec.yaml` to prevent workspace resolution conflicts, as it is activated globally in CI pipelines.",
+      "commits": [
+        "1271e59bc54c3396b6786b1728713e54a6cab471",
+        "9d528d515e14f7861da82d64a45779d1a728e22e"
+      ]
+    }
+  ]
+}
