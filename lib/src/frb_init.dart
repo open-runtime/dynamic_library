@@ -14,26 +14,13 @@ import 'loader.dart' show fullLibraryPath, fullLibraryName;
 String flutterAssetsDirectory({bool localDebugMode = false}) {
   final String resolvedExeDir = path.dirname(Platform.resolvedExecutable);
 
-  if (Platform.isMacOS && localDebugMode) {
+  if (Platform.isMacOS) {
     // Need to resolve it differently in local debug mode because assets are in a different location
-    // Location of resolved exe relative dir when run locally unpackaged:
+    // Location of resolved exe relative dir
     // <build location>/Pieces OS.app/Contents/MacOS
 
-    // Location of flutter assets directory relative dir when run locally unpackaged:
+    // Location of flutter assets directory relative dir
     // <build location>/Pieces OS.app/Contents/Frameworks/App.framework/Versions/A/Resources/flutter_assets/assets
-    return path.joinAll([
-      Directory(resolvedExeDir).parent.path, // Contents
-      'Frameworks',
-      'App.framework',
-      'Versions',
-      'A',
-      'Resources',
-      'flutter_assets',
-      'assets',
-    ]);
-  } else if (Platform.isMacOS) {
-    // Location of resolved exe relative dir when in bundled.app:
-    // Pieces OS.app/Contents/MacOS
     return path.joinAll([
       Directory(resolvedExeDir).parent.path, // Contents
       'Frameworks',
@@ -54,7 +41,7 @@ String flutterAssetsDirectory({bool localDebugMode = false}) {
 String defaultLibraryDirectory({bool localDebugMode = false}) {
   final String resolvedExeDir = path.dirname(Platform.resolvedExecutable);
 
-  if (Platform.isMacOS && localDebugMode) {
+  if (Platform.isMacOS) {
     // Location of resolved exe relative dir when run locally unpackaged:
     // <build location>/Pieces OS.app/Contents/MacOS
     final String contentsDir = Directory(resolvedExeDir)
@@ -62,16 +49,6 @@ String defaultLibraryDirectory({bool localDebugMode = false}) {
         .path;
 
     final String frameworksDir = path.joinAll([contentsDir, 'Frameworks']);
-
-    return frameworksDir;
-  } else if (Platform.isMacOS) {
-    // Relative path resolved exe dir bundled:
-    // Pieces OS.app/Contents/Frameworks/App.framework/Versions/A
-    final String frameworksDir = Directory(resolvedExeDir)
-        .parent // Versions
-        .parent // App.framework
-        .parent // Frameworks
-        .path;
 
     return frameworksDir;
   } else if (Platform.isLinux) {
