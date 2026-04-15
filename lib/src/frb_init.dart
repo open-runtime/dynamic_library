@@ -33,8 +33,17 @@ String flutterAssetsDirectory({bool localDebugMode = false}) {
     ]);
   } else if (Platform.isMacOS) {
     // Location of resolved exe relative dir when in bundled.app:
-    // Pieces OS.app/Contents/Frameworks/App.framework/Versions/A
-    return path.joinAll([resolvedExeDir, 'Resources', 'flutter_assets', 'assets']);
+    // Pieces OS.app/Contents/MacOS
+    return path.joinAll([
+      Directory(resolvedExeDir).parent.path, // Contents
+      'Frameworks',
+      'App.framework',
+      'Versions',
+      'A',
+      'Resources',
+      'flutter_assets',
+      'assets',
+    ]);
   }
 
   // Standard location
