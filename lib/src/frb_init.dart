@@ -51,8 +51,7 @@ String defaultLibraryDirectory({bool localDebugMode = false}) {
     final String frameworksDir = path.joinAll([contentsDir, 'Frameworks']);
 
     return frameworksDir;
-  }
-  else if (Platform.isLinux) {
+  } else if (Platform.isLinux) {
     final String libDir = path.join(resolvedExeDir, 'lib');
     return libDir;
   }
