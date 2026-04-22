@@ -498,6 +498,10 @@ jobs:
           restore-keys: ${{ runner.os }}-go-mcp-
 
       - name: Generate module documentation
+        # Best-effort: if gemini-cli or Gemini itself errors (quota,
+        # policy schema drift in @latest, etc.), fall back to stub
+        # artifacts so the release pipeline keeps moving. Tracked in #14.
+        continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.CICD_GEMINI_API_KEY_OPEN_RUNTIME }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
