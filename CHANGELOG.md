@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.5] - 2026-04-22
+
+### Changed
+- Updated core module hash to unblock docs-freshness and regenerate autodocs (#13)
+- Disabled autodoc in CI temporarily until tooling fixes land (#15)
+- Made release-pipeline autodoc step best-effort to prevent failures (#16)
+
+### Fixed
+- Fixed flutter assets resolution path for macOS (#11)
+- Fixed `defaultLibraryDirectory` for MacOS to point to the correct location (#12) (fixes #12)
+
 ## [1.1.4] - 2026-03-26
 
 ### Changed
@@ -139,6 +150,7 @@ Breaking Changes:
 
 - Initial version.
 
+[1.1.5]: https://github.com/open-runtime/dynamic_library/compare/v1.1.4...v1.1.5
 [1.1.4]: https://github.com/open-runtime/dynamic_library/compare/v1.1.3...v1.1.4
 [1.1.3]: https://github.com/open-runtime/dynamic_library/compare/v1.1.2...v1.1.3
 [1.1.2]: https://github.com/open-runtime/dynamic_library/compare/v1.1.1...v1.1.2

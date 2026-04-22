@@ -26,7 +26,7 @@ Add the following to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  dynamic_library: ^1.1.3
+  dynamic_library: ^1.1.5
 ```
 
 ## Features

@@ -1,0 +1,40 @@
+{
+  "version": "1.1.5",
+  "previous_version": "v1.1.4",
+  "total_commits": 10,
+  "categories": {
+    "added": [],
+    "changed": [
+      {
+        "description": "Make release-pipeline autodoc step best-effort to prevent failures",
+        "pr": "#16",
+        "commits": ["347a686", "559cb86"]
+      },
+      {
+        "description": "Disable autodoc in CI temporarily until tooling fixes land",
+        "pr": "#15",
+        "commits": ["b137444", "2e05a66"]
+      },
+      {
+        "description": "Advance core module hash to unblock docs-freshness and regenerate autodocs",
+        "pr": "#13",
+        "commits": ["45ffcaf", "fb27e09", "00823cc"]
+      }
+    ],
+    "deprecated": [],
+    "removed": [],
+    "fixed": [
+      {
+        "description": "Fix defaultLibraryDirectory for MacOS to point to the correct location",
+        "pr": "#12",
+        "commits": ["e2d5683"]
+      },
+      {
+        "description": "Fix flutter assets resolution path for macOS",
+        "pr": "#11",
+        "commits": ["a02de75", "77422bf"]
+      }
+    ],
+    "security": []
+  }
+}

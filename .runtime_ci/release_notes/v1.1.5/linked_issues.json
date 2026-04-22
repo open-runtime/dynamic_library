@@ -1,0 +1,27 @@
+{
+  "version": "1.1.5",
+  "github_issues": [
+    {
+      "number": 12,
+      "title": "Fix: defaultLibraryDirectory for MacOS should now point to the correct location",
+      "status": "fixed",
+      "confidence": 1.0,
+      "referenced_in": ["release_notes", "changelog"]
+    },
+    {
+      "number": 14,
+      "title": "Bump runtime_ci_tooling pin to v0.26.1 and regenerate workflow templates",
+      "status": "related",
+      "confidence": 0.8,
+      "referenced_in": ["release_notes"]
+    }
+  ],
+  "sentry_issues": [],
+  "prs_referenced": [
+    {"number": 11, "title": "Hotfix: fix flutter assets resolution", "author": "robert-at-pieces"},
+    {"number": 12, "title": "Fix: defaultLibraryDirectory for MacOS should now point to the correct location", "author": "robert-at-pieces"},
+    {"number": 13, "title": "chore(autodoc): advance core module hash to unblock docs-freshness", "author": "letterle-at-pieces"},
+    {"number": 15, "title": "chore(ci): disable autodoc until tooling fixes land", "author": "letterle-at-pieces"},
+    {"number": 16, "title": "chore(ci): make release-pipeline autodoc step best-effort", "author": "letterle-at-pieces"}
+  ]
+}

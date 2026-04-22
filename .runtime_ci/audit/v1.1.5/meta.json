@@ -1,0 +1,94 @@
+{
+  "command": "merged-audit",
+  "started_at": "2026-04-22T17:00:58.097833",
+  "merged_from": [
+    {
+      "artifact": "cicd-audit-release-notes",
+      "command": "release-notes",
+      "args": [],
+      "started_at": "2026-04-22T16:55:31.027739",
+      "pid": 2729,
+      "platform": "linux",
+      "dart_version": "3.9.2",
+      "repo_root": "/home/runner/work/dynamic_library/dynamic_library",
+      "run_dir": "/home/runner/work/dynamic_library/dynamic_library/.runtime_ci/runs/run_2026-04-22T16-55-31_2729",
+      "ci": true,
+      "completed_at": "2026-04-22T17:00:34.424859",
+      "duration_seconds": 303,
+      "artifacts": [
+        "release-notes/prompt.txt",
+        "release-notes/gemini_response.json",
+        "release-notes/release_notes.md",
+        "meta.json"
+      ]
+    },
+    {
+      "artifact": "cicd-audit-prepare-release-docs",
+      "command": "documentation",
+      "args": [],
+      "started_at": "2026-04-22T16:54:48.254878",
+      "pid": 5149,
+      "platform": "linux",
+      "dart_version": "3.9.2",
+      "repo_root": "/home/runner/work/dynamic_library/dynamic_library",
+      "run_dir": "/home/runner/work/dynamic_library/dynamic_library/.runtime_ci/runs/run_2026-04-22T16-54-48_5149",
+      "ci": true
+    },
+    {
+      "artifact": "cicd-audit-prepare-release-docs",
+      "command": "compose",
+      "args": [],
+      "started_at": "2026-04-22T16:51:43.993871",
+      "pid": 2689,
+      "platform": "linux",
+      "dart_version": "3.9.2",
+      "repo_root": "/home/runner/work/dynamic_library/dynamic_library",
+      "run_dir": "/home/runner/work/dynamic_library/dynamic_library/.runtime_ci/runs/run_2026-04-22T16-51-43_2689",
+      "ci": true,
+      "completed_at": "2026-04-22T16:54:47.914446",
+      "duration_seconds": 183,
+      "artifacts": [
+        "compose/prompt.txt",
+        "compose/gemini_response.json",
+        "meta.json"
+      ]
+    },
+    {
+      "artifact": "cicd-audit-autodoc",
+      "command": "autodoc",
+      "args": [],
+      "started_at": "2026-04-22T16:42:58.772035",
+      "pid": 2701,
+      "platform": "linux",
+      "dart_version": "3.9.2",
+      "repo_root": "/home/runner/work/dynamic_library/dynamic_library",
+      "run_dir": "/home/runner/work/dynamic_library/dynamic_library/.runtime_ci/runs/run_2026-04-22T16-42-58_2701",
+      "ci": true
+    },
+    {
+      "artifact": "cicd-audit-explore",
+      "command": "explore",
+      "args": [],
+      "started_at": "2026-04-22T16:45:35.427185",
+      "pid": 2637,
+      "platform": "linux",
+      "dart_version": "3.9.2",
+      "repo_root": "/home/runner/work/dynamic_library/dynamic_library",
+      "run_dir": "/home/runner/work/dynamic_library/dynamic_library/.runtime_ci/runs/run_2026-04-22T16-45-35_2637",
+      "ci": true,
+      "completed_at": "2026-04-22T16:51:07.053120",
+      "duration_seconds": 331,
+      "exit_code": 0,
+      "artifacts": [
+        "explore/prompt.txt",
+        "explore/gemini_response.json",
+        "meta.json"
+      ]
+    }
+  ],
+  "artifact_count": 6,
+  "total_files": 18,
+  "ci": true,
+  "platform": "linux",
+  "dart_version": "3.9.2"
+}

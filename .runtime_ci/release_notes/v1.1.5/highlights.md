@@ -1,0 +1,3 @@
+- Corrected macOS path resolution for `flutterAssetsDirectory` and `defaultLibraryDirectory`, fixing missing libraries in bundled applications.
+- Advanced core module hash to successfully unblock `docs-freshness` CI checks.
+- Temporarily updated the release pipeline to make the autodoc generation step best-effort, preventing failures from blocking releases.

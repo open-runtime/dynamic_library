@@ -1,0 +1,44 @@
+{
+  "pull_requests": [
+    {
+      "number": 16,
+      "title": "chore(ci): make release-pipeline autodoc step best-effort",
+      "author": "letterle-at-pieces",
+      "labels": ["ci", "chore"],
+      "summary": "Adds continue-on-error to the autodoc generation step in the release pipeline to prevent gemini-cli failures from blocking the entire release.",
+      "commits": ["347a686", "559cb86"]
+    },
+    {
+      "number": 15,
+      "title": "chore(ci): disable autodoc until tooling fixes land",
+      "author": "letterle-at-pieces",
+      "labels": ["ci", "chore"],
+      "summary": "Temporarily disables the autodoc feature in CI configuration to unblock the release pipeline until upstream tooling bugs are fixed.",
+      "commits": ["b137444", "2e05a66"]
+    },
+    {
+      "number": 13,
+      "title": "chore(autodoc): advance core module hash to unblock docs-freshness",
+      "author": "letterle-at-pieces",
+      "labels": ["bug"],
+      "summary": "Advances the stored source hash for the core module to resolve failing docs-freshness checks caused by recent code changes.",
+      "commits": ["45ffcaf", "fb27e09", "00823cc"]
+    },
+    {
+      "number": 12,
+      "title": "Fix: defaultLibraryDirectory for MacOS should now point to the correct location",
+      "author": "robert-at-pieces",
+      "labels": [],
+      "summary": "Fixes the default library directory resolution on macOS. The localDebugMode logic was removed but the parameter is kept for backward compatibility.",
+      "commits": ["e2d5683"]
+    },
+    {
+      "number": 11,
+      "title": "Hotfix: fix flutter assets resolution",
+      "author": "robert-at-pieces",
+      "labels": [],
+      "summary": "Hotfix to correct the resolution path for flutter assets on macOS.",
+      "commits": ["a02de75", "77422bf"]
+    }
+  ]
+}
